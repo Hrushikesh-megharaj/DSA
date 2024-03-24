@@ -1,0 +1,615 @@
+1. Hello World
+Question: Print "Hello, World!" to the console.
+
+c
+Copy code
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+2. Factorial
+Question: Calculate the factorial of a given number.
+
+c
+Copy code
+#include <stdio.h>
+
+int factorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    printf("Factorial of %d is %d\n", num, factorial(num));
+    return 0;
+}
+3. Prime Numbers
+Question: Determine whether a given number is prime.
+
+c
+Copy code
+#include <stdio.h>
+
+int isPrime(int num) {
+    if (num <= 1)
+        return 0; // Not prime
+    
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0)
+            return 0; // Not prime
+    }
+    
+    return 1; // Prime
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    if (isPrime(num))
+        printf("%d is a prime number.\n", num);
+    else
+        printf("%d is not a prime number.\n", num);
+    
+    return 0;
+}
+4. Fibonacci Series
+Question: Generate the Fibonacci series up to a certain limit.
+
+c
+Copy code
+#include <stdio.h>
+
+void fibonacci(int limit) {
+    int a = 0, b = 1, c;
+    printf("Fibonacci Series up to %d terms:\n", limit);
+    printf("%d, %d, ", a, b);
+    for (int i = 3; i <= limit; i++) {
+        c = a + b;
+        printf("%d, ", c);
+        a = b;
+        b = c;
+    }
+    printf("\n");
+}
+
+int main() {
+    int limit;
+    printf("Enter the limit for Fibonacci series: ");
+    scanf("%d", &limit);
+    
+    fibonacci(limit);
+    return 0;
+}
+5. Sum of Digits
+Question: Calculate the sum of digits of a given number.
+
+c
+Copy code
+#include <stdio.h>
+
+int sumOfDigits(int num) {
+    int sum = 0;
+    while (num > 0) {
+        sum += num % 10;
+        num /= 10;
+    }
+    return sum;
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    printf("Sum of digits of %d is %d\n", num, sumOfDigits(num));
+    return 0;
+}
+6. Reverse a Number
+Question: Reverse the digits of a given number.
+
+c
+Copy code
+#include <stdio.h>
+
+int reverseNumber(int num) {
+    int reversed = 0;
+    while (num > 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    return reversed;
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    printf("Reversed number: %d\n", reverseNumber(num));
+    return 0;
+}
+7. Palindrome Check
+Question: Check if a given number or string is a palindrome.
+
+c
+Copy code
+#include <stdio.h>
+#include <string.h>
+
+int isPalindrome(char *str) {
+    int len = strlen(str);
+    for (int i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - i - 1])
+            return 0; // Not palindrome
+    }
+    return 1; // Palindrome
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    if (isPalindrome(str))
+        printf("%s is a palindrome.\n", str);
+    else
+        printf("%s is not a palindrome.\n", str);
+    
+    return 0;
+}
+8. Area of Shapes
+Question: Calculate the area of shapes like rectangle, triangle, and circle.
+
+c
+Copy code
+#include <stdio.h>
+#include <math.h>
+
+#define PI 3.14159
+
+float rectangleArea(float length, float width) {
+    return length * width;
+}
+
+float triangleArea(float base, float height) {
+    return 0.5 * base * height;
+}
+
+float circleArea(float radius) {
+    return PI * radius * radius;
+}
+
+int main() {
+    float length, width, base, height, radius;
+    
+    // Rectangle
+    printf("Enter length and width of the rectangle: ");
+    scanf("%f %f", &length, &width);
+    printf("Area of rectangle: %.2f\n", rectangleArea(length, width));
+    
+    // Triangle
+    printf("Enter base and height of the triangle: ");
+    scanf("%f %f", &base, &height);
+    printf("Area of triangle: %.2f\n", triangleArea(base, height));
+    
+    // Circle
+    printf("Enter radius of the circle: ");
+    scanf("%f", &radius);
+    printf("Area of circle: %.2f\n", circleArea(radius));
+    
+    return 0;
+}
+9. Simple Calculator
+Question: Implement a basic calculator with arithmetic operations.
+
+c
+Copy code
+#include <stdio.h>
+
+int main() {
+    char operator;
+    double num1, num2;
+
+    printf("Enter an operator (+, -, *, /): ");
+    scanf("%c", &operator);
+
+    printf("Enter two operands: ");
+    scanf("%lf %lf", &num1, &num2);
+
+    switch (operator) {
+        case '+':
+            printf("%.2lf + %.2lf = %.2lf\n", num1, num2, num1 + num2);
+            break;
+        case '-':
+            printf("%.2lf - %.2lf = %.2lf\n", num1, num2, num1 - num2);
+            break;
+        case '*':
+            printf("%.2lf * %.2lf = %.2lf\n", num1, num2, num1 * num2);
+            break;
+        case '/':
+            if (num2 != 0)
+                printf("%.2lf / %.2lf = %.2lf\n", num1, num2, num1 / num2);
+            else
+                printf("Error! Division by zero.\n");
+            break;
+        default:
+            printf("Error! Invalid operator.\n");
+    }
+
+    return 0;
+}
+10. Array Operations
+Question: Perform operations like finding the largest/smallest element, sum, and average of an array.
+
+c
+Copy code
+#include <stdio.h>
+
+void arrayOperations(int arr[], int size) {
+    int sum = 0, max = arr[0], min = arr[0];
+    double average;
+
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+        if (arr[i] > max)
+            max = arr[i];
+        if (arr[i] < min)
+            min = arr[i];
+    }
+    average = (double)sum / size;
+
+    printf("Sum of elements: %d\n", sum);
+    printf("Average of elements: %.2f\n", average);
+    printf("Largest element: %d\n", max);
+    printf("Smallest element: %d\n", min);
+}
+
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int arr[size];
+    printf("Enter %d elements: ", size);
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr[i]);
+
+    arrayOperations(arr, size);
+
+    return 0;
+}
+11. String Operations
+Question: Manipulate strings such as concatenation, copying, and comparison.
+
+c
+Copy code
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[100], str2[100], copyStr[100];
+    
+    // String concatenation
+    printf("Enter the first string: ");
+    scanf("%s", str1);
+    printf("Enter the second string: ");
+    scanf("%s", str2);
+    
+    strcat(str1, str2);
+    printf("Concatenated string: %s\n", str1);
+    
+    // String copying
+    strcpy(copyStr, str1);
+    printf("Copied string: %s\n", copyStr);
+    
+    // String comparison
+    if (strcmp(str1, str2) == 0)
+        printf("The strings are equal.\n");
+    else
+        printf("The strings are not equal.\n");
+    
+    return 0;
+}
+12. Linear Search
+Question: Search for an element in an array using linear search.
+
+c
+Copy code
+#include <stdio.h>
+
+int linearSearch(int arr[], int size, int target) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == target)
+            return i; // Element found at index i
+    }
+    return -1; // Element not found
+}
+
+int main() {
+    int size, target;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int arr[size];
+    printf("Enter %d elements: ", size);
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr[i]);
+
+    printf("Enter the element to search: ");
+    scanf("%d", &target);
+
+    int index = linearSearch(arr, size, target);
+
+    if (index != -1)
+        printf("%d found at index %d\n", target, index);
+    else
+        printf("%d not found in the array.\n", target);
+
+    return 0;
+}
+13. Binary Search
+Question: Search for an element in a sorted array using binary search.
+
+c
+Copy code
+#include <stdio.h>
+
+int binarySearch(int arr[], int size, int target) {
+    int low = 0, high = size - 1, mid;
+    
+    while (low <= high) {
+        mid = (low + high) / 2;
+        
+        if (arr[mid] == target)
+            return mid; // Element found at index mid
+        else if (arr[mid] < target)
+            low = mid + 1; // Search in the right half
+        else
+            high = mid - 1; // Search in the left half
+    }
+    
+    return -1; // Element not found
+}
+
+int main() {
+    int size, target;
+    printf("Enter the size of the sorted array: ");
+    scanf("%d", &size);
+
+    int arr[size];
+    printf("Enter %d sorted elements: ", size);
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr[i]);
+
+    printf("Enter the element to search: ");
+    scanf("%d", &target);
+
+    int index = binarySearch(arr, size, target);
+
+    if (index != -1)
+        printf("%d found at index %d\n", target, index);
+    else
+        printf("%d not found in the array.\n", target);
+
+    return 0;
+}
+14. Selection Sort
+Question: Sort an array using the selection sort algorithm.
+
+c
+Copy code
+#include <stdio.h>
+
+void selectionSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        int min_index = i;
+        for (int j = i + 1; j < size; j++) {
+            if (arr[j] < arr[min_index])
+                min_index = j;
+        }
+        if (min_index != i) {
+            int temp = arr[i];
+            arr[i] = arr[min_index];
+            arr[min_index] = temp;
+        }
+    }
+}
+
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int arr[size];
+    printf("Enter %d elements: ", size);
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr[i]);
+
+    selectionSort(arr, size);
+
+    printf("Sorted array: ");
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+
+    return 0;
+}
+15. Bubble Sort
+Question: Sort an array using the bubble sort algorithm.
+
+c
+Copy code
+#include <stdio.h>
+
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        int swapped = 0;
+        for (int j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1;
+            }
+        }
+        if (!swapped)
+            break; // Array is already sorted
+    }
+}
+
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int arr[size];
+    printf("Enter %d elements: ", size);
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr[i]);
+
+    bubbleSort(arr, size);
+
+    printf("Sorted array: ");
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+
+    return 0;
+}
+16. Insertion Sort
+Question: Sort an array using the insertion sort algorithm.
+
+c
+Copy code
+#include <stdio.h>
+
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int arr[size];
+    printf("Enter %d elements: ", size);
+    for (int i = 0; i < size; i++)
+        scanf("%d", &arr[i]);
+
+    insertionSort(arr, size);
+
+    printf("Sorted array: ");
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+
+    return 0;
+}
+17. Matrix Operations
+Question: Perform matrix addition, subtraction, multiplication, and transpose.
+
+c
+Copy code
+#include <stdio.h>
+
+#define ROWS 3
+#define COLS 3
+
+void matrixAddition(int mat1[ROWS][COLS], int mat2[ROWS][COLS]) {
+    int result[ROWS][COLS];
+    printf("Matrix Addition Result:\n");
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            result[i][j] = mat1[i][j] + mat2[i][j];
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void matrixSubtraction(int mat1[ROWS][COLS], int mat2[ROWS][COLS]) {
+    int result[ROWS][COLS];
+    printf("Matrix Subtraction Result:\n");
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            result[i][j] = mat1[i][j] - mat2[i][j];
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void matrixMultiplication(int mat1[ROWS][COLS], int mat2[ROWS][COLS]) {
+    int result[ROWS][COLS];
+    printf("Matrix Multiplication Result:\n");
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < COLS; k++) {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void matrixTranspose(int mat[ROWS][COLS]) {
+    int result[ROWS][COLS];
+    printf("Matrix Transpose Result:\n");
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            result[j][i] = mat[i][j];
+        }
+    }
+    for (int i = 0; i < COLS; i++) {
+        for (int j = 0; j < ROWS; j++) {
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int matrix1[ROWS][COLS], matrix2[ROWS][COLS];
+    
+    printf("Enter elements of first matrix (%dx%d):\n", ROWS, COLS);
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            scanf("%d", &matrix1[i][j]);
+        }
+    }
+    
+    printf("Enter elements of second matrix (%dx%d):\n", ROWS, COLS);
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            scanf("%d", &matrix2[i][j]);
+        }
+    }
+    
+    matrixAddition(matrix1, matrix2);
+    matrixSubtraction(matrix1, matrix2);
+    matrixMultiplication(matrix1, matrix2);
+    matrixTranspose(matrix1);
+    
+    return 0;
+}
